@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signal Energy Analysis</title>
+    <title>Signal Energy - Detailed Solutions</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
-            --primary: #2563eb;
+            --primary: #1e40af;
             --bg: #f8fafc;
-            --text: #0f172a;
+            --text: #1e293b;
             --card: #ffffff;
-            --accent: #3b82f6;
+            --math-bg: #f1f5f9;
         }
 
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
         }
@@ -32,8 +32,8 @@
 
         header {
             text-align: center;
-            padding-bottom: 40px;
-            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--primary);
             margin-bottom: 40px;
         }
 
@@ -41,7 +41,7 @@
             background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-bottom: 40px;
             text-align: center;
         }
@@ -51,54 +51,52 @@
             border-radius: 8px;
         }
 
-        .theory-box {
-            background: #eff6ff;
-            border-left: 5px solid var(--primary);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-
-        .solution-section {
+        .solution-card {
             background: var(--card);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            margin-bottom: 30px;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
             border: 1px solid #e2e8f0;
         }
 
         h2 {
             color: var(--primary);
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            margin-bottom: 25px;
         }
 
-        .math-display {
-            background: #f1f5f9;
+        h3 {
+            color: #334155;
+            margin-top: 30px;
+            text-decoration: underline;
+        }
+
+        .math-block {
+            background: var(--math-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            overflow-x: auto;
+            border: 1px solid #cbd5e1;
+        }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #22c55e;
             padding: 15px;
             border-radius: 8px;
-            margin: 15px 0;
-            overflow-x: auto;
-        }
-
-        .result-badge {
-            display: inline-block;
-            background: #dcfce7;
-            color: #166534;
-            padding: 4px 12px;
-            border-radius: 20px;
             font-weight: bold;
-            font-size: 0.9em;
+            color: #166534;
+            text-align: center;
         }
 
         footer {
             text-align: center;
-            margin-top: 60px;
+            padding: 40px;
             color: #64748b;
-            font-size: 0.9em;
         }
     </style>
 </head>
@@ -106,68 +104,84 @@
 
 <div class="container">
     <header>
-        <h1>Step-by-Step Signal Energy Analysis</h1>
-        <p>Finding the energy for signals shown in the provided figure</p>
+        <h1>Detailed Signal Energy Analysis</h1>
+        <p>Step-by-Step Integration Solutions</p>
     </header>
 
     <div class="image-container">
         <img src="Gemini_Generated_Image_jel29mjel29mjel2.png" alt="Signal Graphs">
-        <p><small>Figure: Continuous-time signals for sets (a), (b), and (c)</small></p>
+        <p><em>Reference Figure for Sets (a), (b), and (c)</em></p>
     </div>
 
-    <div class="theory-box">
-        <h3>Fundamental Formula</h3>
-        <p>To find the energy of a continuous-time signal \( g(t) \), we use:</p>
-        <div class="math-display">
-            \[ E_g = \int_{-\infty}^{\infty} |g(t)|^2 dt \]
-        </div>
-        <p><strong>Note:</strong> Since these signals are rectangular pulses with amplitudes of \( 1 \) or \( -1 \), the squared magnitude \( |g(t)|^2 \) is always **1** over the duration of the signal and **0** elsewhere.</p>
-    </div>
-
-    <section class="solution-section">
-        <h2>Set (a)</h2>
-        <p><strong>Signal \( x(t) \):</strong> A single pulse with amplitude 1 from \( t=0 \) to \( t=2 \).</p>
-        <div class="math-display">
-            \[ E_x = \int_{0}^{2} (1)^2 dt = [t]_0^2 = 2 \]
-        </div>
+    <section class="solution-card">
+        <h2>Solution for Set (a)</h2>
         
-        <p><strong>Signal \( y(t) \):</strong> Amplitude 1 from 0 to 1, and amplitude -1 from 1 to 2.</p>
-        <div class="math-display">
-            \[ E_y = \int_{0}^{1} (1)^2 dt + \int_{1}^{2} (-1)^2 dt = 1 + 1 = 2 \]
+        <h3>1. Signal \( x(t) \)</h3>
+        <p>The signal is a pulse of amplitude 1 from \( t=0 \) to \( t=2 \):</p>
+        <div class="math-block">
+            \[ E_x = \int_{0}^{2} |x(t)|^2 dt \]
+            \[ E_x = \int_{0}^{2} (1)^2 dt = \int_{0}^{2} 1 \, dt \]
+            \[ E_x = [t]_{0}^{2} = (2) - (0) = 2 \]
         </div>
-        <span class="result-badge">Result: E = 2</span>
+
+        <h3>2. Signal \( y(t) \)</h3>
+        <p>The signal has two parts: amplitude 1 in \([0, 1]\) and amplitude -1 in \([1, 2]\):</p>
+        <div class="math-block">
+            \[ E_y = \int_{0}^{2} |y(t)|^2 dt \]
+            \[ E_y = \int_{0}^{1} (1)^2 dt + \int_{1}^{2} (-1)^2 dt \]
+            \[ E_y = \int_{0}^{1} 1 \, dt + \int_{1}^{2} 1 \, dt \]
+            \[ E_y = [t]_{0}^{1} + [t]_{1}^{2} \]
+            \[ E_y = (1 - 0) + (2 - 1) = 1 + 1 = 2 \]
+        </div>
+        <div class="highlight-box">Final Result for (a): \( E_x = 2, E_y = 2 \)</div>
     </section>
 
-    <section class="solution-section">
-        <h2>Set (b)</h2>
-        <p><strong>Signal \( x(t) \):</strong> A pulse of 1 from \( 0 \) to \( \pi \) and -1 from \( \pi \) to \( 2\pi \).</p>
-        <div class="math-display">
-            \[ E_x = \int_{0}^{\pi} (1)^2 dt + \int_{\pi}^{2\pi} (-1)^2 dt = \pi + \pi = 2\pi \]
-        </div>
+    <section class="solution-card">
+        <h2>Solution for Set (b)</h2>
         
-        <p><strong>Signal \( y(t) \):</strong> An oscillating square wave. Because \( |y(t)|^2 = 1 \) for the entire duration from \( 0 \) to \( 2\pi \):</p>
-        <div class="math-display">
-            \[ E_y = \int_{0}^{2\pi} 1 dt = 2\pi \]
+        <h3>1. Signal \( x(t) \)</h3>
+        <p>Defined as 1 for \( t \in [0, \pi] \) and -1 for \( t \in [\pi, 2\pi] \):</p>
+        <div class="math-block">
+            \[ E_x = \int_{0}^{\pi} (1)^2 dt + \int_{\pi}^{2\pi} (-1)^2 dt \]
+            \[ E_x = \int_{0}^{\pi} 1 \, dt + \int_{\pi}^{2\pi} 1 \, dt \]
+            \[ E_x = [t]_{0}^{\pi} + [t]_{\pi}^{2\pi} \]
+            \[ E_x = (\pi - 0) + (2\pi - \pi) = \pi + \pi = 2\pi \]
         </div>
-        <span class="result-badge">Result: E = 2&pi;</span>
+
+        <h3>2. Signal \( y(t) \)</h3>
+        <p>This signal oscillates, but since \( |y(t)|^2 = 1 \) at all points between \( 0 \) and \( 2\pi \), we calculate the energy for the full duration shown in the graph:</p>
+        <div class="math-block">
+            \[ E_y = \int_{0}^{2\pi} |y(t)|^2 dt \]
+            \[ E_y = \int_{0}^{\pi/2} (1)^2 dt + \int_{\pi/2}^{\pi} (-1)^2 dt + \int_{\pi}^{3\pi/2} (1)^2 dt + \int_{3\pi/2}^{2\pi} (-1)^2 dt \]
+            \[ E_y = \int_{0}^{2\pi} 1 \, dt = [t]_{0}^{2\pi} \]
+            \[ E_y = 2\pi - 0 = 2\pi \]
+        </div>
+        <div class="highlight-box">Final Result for (b): \( E_x = 2\pi, E_y = 2\pi \)</div>
     </section>
 
-    <section class="solution-section">
-        <h2>Set (c)</h2>
-        <p><strong>Signal \( x(t) \):</strong> Pulse of 1 from \( 0 \) to \( \pi/4 \) and -1 from \( \pi/4 \) to \( \pi \).</p>
-        <div class="math-display">
-            \[ E_x = \int_{0}^{\pi/4} (1)^2 dt + \int_{\pi/4}^{\pi} (-1)^2 dt = \frac{\pi}{4} + \left( \pi - \frac{\pi}{4} \right) = \pi \]
-        </div>
+    <section class="solution-card">
+        <h2>Solution for Set (c)</h2>
         
-        <p><strong>Signal \( y(t) \):</strong> A single pulse with amplitude 1 from \( 0 \) to \( \pi \).</p>
-        <div class="math-display">
-            \[ E_y = \int_{0}^{\pi} (1)^2 dt = \pi \]
+        <h3>1. Signal \( x(t) \)</h3>
+        <p>Amplitude 1 for \( [0, \pi/4] \) and -1 for \( [\pi/4, \pi] \):</p>
+        <div class="math-block">
+            \[ E_x = \int_{0}^{\pi/4} (1)^2 dt + \int_{\pi/4}^{\pi} (-1)^2 dt \]
+            \[ E_x = \int_{0}^{\pi/4} 1 \, dt + \int_{\pi/4}^{\pi} 1 \, dt \]
+            \[ E_x = [t]_{0}^{\pi/4} + [t]_{\pi/4}^{\pi} \]
+            \[ E_x = (\frac{\pi}{4} - 0) + (\pi - \frac{\pi}{4}) = \frac{\pi}{4} + \frac{3\pi}{4} = \pi \]
         </div>
-        <span class="result-badge">Result: E = &pi;</span>
+
+        <h3>2. Signal \( y(t) \)</h3>
+        <p>A simple pulse from \( 0 \) to \( \pi \):</p>
+        <div class="math-block">
+            \[ E_y = \int_{0}^{\pi} (1)^2 dt = [t]_{0}^{\pi} \]
+            \[ E_y = \pi - 0 = \pi \]
+        </div>
+        <div class="highlight-box">Final Result for (c): \( E_x = \pi, E_y = \pi \)</div>
     </section>
 
     <footer>
-        <p>Created for Educational Purposes &bull; Signal Processing 101</p>
+        <p>Step-by-Step Mathematical Analysis &bull; Signal Processing Concepts</p>
     </footer>
 </div>
 
